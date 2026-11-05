@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Electrical Engineering Assistant powered by Amazon Bedrock"
+    >
+
+    <title>Electrical Engineering Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="/styles.css"
+    >
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="brand-icon" aria-hidden="true">
+                ⚡
+            </div>
+
+            <div>
+                <h1>Electrical Engineering Assistant</h1>
+
+                <p>
+                    Ask questions about electrical calculations,
+                    motors, voltage drop, batteries and energy.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <section class="question-card">
+            <div class="section-heading">
+                <div>
+                    <h2>Ask an electrical question</h2>
+
+                    <p>
+                        Include all available values and units for a
+                        more accurate response.
+                    </p>
+                </div>
+            </div>
+
+            <form id="questionForm">
+                <label for="question">
+                    Electrical engineering question
+                </label>
+
+                <textarea
+                    id="question"
+                    name="question"
+                    maxlength="4000"
+                    placeholder="Example: A 10 kW three-phase motor operates at 415 V, power factor 0.85 and efficiency 90%. Calculate the current."
+                    required
+                ></textarea>
+
+                <div class="textarea-footer">
+                    <span id="characterCount">
+                        0 / 4000
+                    </span>
+                </div>
+
+                <div class="button-row">
+                    <button
+                        id="askButton"
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Ask Assistant
+                    </button>
+
+                    <button
+                        id="clearButton"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Clear
+                    </button>
+                </div>
+            </form>
+
+            <div
+                id="status"
+                class="status-message"
+                aria-live="polite"
+            ></div>
+        </section>
+
+        <section class="examples-card">
+            <h2>Example questions</h2>
+
+            <div class="example-grid">
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="A 24 V supply is connected across a 12 ohm resistive load. Calculate the current and power."
+                >
+                    Ohm's law
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="A 10 kW three-phase motor operates at 415 V, power factor 0.85 and efficiency 90%. Calculate the full-load current."
+                >
+                    Three-phase motor current
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="A single-phase load draws 10.77 A at 220 V and is installed 50 m from the distribution board using copper conductors. Calculate the minimum conductor area based on a maximum voltage drop of 3%. State all assumptions."
+                >
+                    Voltage drop
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="A telecom site has a continuous load of 2 kW. Estimate the battery energy needed for 5 hours of autonomy. Assume 80 percent maximum depth of discharge and 90 percent system efficiency."
+                >
+                    Battery autonomy
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="A 7.5 kWp solar PV system receives an average of 5.5 peak sun hours per day and has an overall performance ratio of 0.78. Estimate the daily energy production."
+                >
+                    Solar PV energy
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-question="Explain the electrical protection relationship Ib less than or equal to In less than or equal to Iz using a practical example."
+                >
+                    Breaker and cable coordination
+                </button>
+            </div>
+        </section>
+
+        <section
+            id="answerCard"
+            class="answer-card hidden"
+        >
+            <div class="answer-header">
+                <div>
+                    <h2>Engineering response</h2>
+
+                    <p id="tokenUsage"></p>
+                </div>
+
+                <button
+                    id="copyButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Copy answer
+                </button>
+            </div>
+
+            <div
+                id="answer"
+                class="answer-content"
+                aria-live="polite"
+            ></div>
+        </section>
+
+        <section class="notice-card">
+            <h2>Engineering notice</h2>
+
+            <p>
+                This application is intended for learning and initial
+                calculations. Final cable, protection, motor, battery,
+                generator and solar selections should be verified
+                against the applicable electrical standard,
+                manufacturer's data and actual installation conditions.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            Electrical Engineering Assistant powered by Amazon Bedrock
+        </p>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>
